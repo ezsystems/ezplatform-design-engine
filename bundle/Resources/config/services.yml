@@ -1,0 +1,52 @@
+parameters:
+    ezdesign.themes_list: []
+    ezdesign.design_list: []
+    ezdesign.templates_path_map: {}
+    ezdesign.assets_path_map: {}
+    ezdesign.templates_override_paths: []
+    ezdesign.assets_override_paths: []
+    ezdesign.asset_resolved_paths: {}
+    ezdesign.asset_resolution.disabled: '%kernel.debug%'
+    ezdesign.phpstorm.enabled: true
+
+services:
+    ezdesign.template_name_resolver:
+        class: EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver
+        arguments: ["$design;ezdesign$"]
+        lazy: true
+
+    ezdesign.twig_theme_loader:
+        class: EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigThemeLoader
+        public: false
+        decorates: twig.loader.filesystem
+        arguments:
+            - "@ezdesign.template_name_resolver"
+            - "@ezdesign.twig_theme_loader.inner"
+            - "@templating.locator"
+            - "@templating.name_parser"
+
+    ezdesign.asset_path_resolver.runtime:
+        class: EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver
+        arguments:
+            - "%ezdesign.assets_path_map%"
+            - "%webroot_dir%"
+        public: false
+
+    ezdesign.asset_path_resolver.provisioned:
+        class: EzSystems\EzPlatformDesignEngine\Asset\ProvisionedPathResolver
+        arguments:
+            - '%ezdesign.asset_resolved_paths%'
+            - '@ezdesign.asset_path_resolver.runtime'
+            - '%webroot_dir%'
+        public: false
+
+    ezdesign.asset_path_resolver:
+        alias: ezdesign.asset_path_resolver.runtime
+
+    ezdesign.asset_theme_package:
+        class: EzSystems\EzPlatformDesignEngine\Asset\ThemePackage
+        arguments:
+            - "@ezdesign.asset_path_resolver"
+            - "@assets._default_package"
+        calls:
+            - [setCurrentDesign, ["$design;ezdesign"]]

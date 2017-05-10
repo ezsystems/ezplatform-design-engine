@@ -1,0 +1,34 @@
+{
+    "name": "ezsystems/ezplatform-design-engine",
+    "description": "Design fallback mechanism for eZ Platform",
+    "license": "MIT",
+    "type": "ezplatform-bundle",
+    "version": "0.1",
+    "authors": [
+        {
+            "name": "Jerome Vieilledent",
+            "email": "jerome@vieilledent.fr"
+        },
+        {
+            "name": "eZ Systems dev team",
+            "email": "dev-team@ez.no"
+        }
+    ],
+    "require": {
+        "ezsystems/ezpublish-kernel": "^6.0.0",
+        "twig/twig": "^1.27|^2.0",
+        "symfony/symfony": "^2.8.13|^3.1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4",
+        "mikey179/vfsStream": "^1.6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "EzSystems\\EzPlatformDesignEngine\\": "lib",
+            "EzSystems\\EzPlatformDesignEngine\\Tests\\": "tests/lib",
+            "EzSystems\\EzPlatformDesignEngineBundle\\": "bundle",
+            "EzSystems\\EzPlatformDesignEngineBundle\\Tests\\": "tests/bundle"
+        }
+    }
+}

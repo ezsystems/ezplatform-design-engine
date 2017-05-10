@@ -1,0 +1,3 @@
+parameters:
+    ezdesign.default.design: ~
+    ezdesign.default.twig_globals: {}
