@@ -10,11 +10,13 @@
 namespace EzSystems\EzPlatformDesignEngine\Templating\Twig;
 
 use EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface;
+use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface;
 use Symfony\Bundle\TwigBundle\Loader\FilesystemLoader;
 use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\Templating\TemplateNameParserInterface;
 use Twig_ExistsLoaderInterface;
 use Twig_LoaderInterface;
+use Twig_Source;
 
 /**
  * Proxy to regular Twig FilesystemLoader.
@@ -32,12 +34,18 @@ class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, 
     private $nameResolver;
 
     /**
+     * @var TemplatePathRegistryInterface
+     */
+    private $pathRegistry;
+
+    /**
      * @var Twig_LoaderInterface|Twig_ExistsLoaderInterface|\Twig_Loader_Filesystem
      */
     private $innerFilesystemLoader;
 
     public function __construct(
         TemplateNameResolverInterface $templateNameResolver,
+        TemplatePathRegistryInterface $templatePathRegistry,
         Twig_LoaderInterface $innerFilesystemLoader,
         FileLocatorInterface $locator,
         TemplateNameParserInterface $parser
@@ -45,6 +53,7 @@ class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, 
     {
         $this->innerFilesystemLoader = $innerFilesystemLoader;
         $this->nameResolver = $templateNameResolver;
+        $this->pathRegistry = $templatePathRegistry;
 
         parent::__construct($locator, $parser);
     }
@@ -61,7 +70,10 @@ class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, 
 
     public function getSourceContext($name)
     {
-        return $this->innerFilesystemLoader->getSourceContext($this->nameResolver->resolveTemplateName($name));
+        $source = $this->innerFilesystemLoader->getSourceContext($this->nameResolver->resolveTemplateName($name));
+        $this->pathRegistry->mapTemplatePath($source->getName(), $source->getPath());
+
+        return $source;
     }
 
     public function getCacheKey($name)

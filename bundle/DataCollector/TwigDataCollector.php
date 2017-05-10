@@ -9,7 +9,7 @@
 
 namespace EzSystems\EzPlatformDesignEngineBundle\DataCollector;
 
-use EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface;
+use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface;
 use Symfony\Bridge\Twig\DataCollector\TwigDataCollector as BaseCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,23 +18,23 @@ use Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
 class TwigDataCollector extends BaseCollector implements LateDataCollectorInterface
 {
     /**
-     * @var TemplateNameResolverInterface
+     * @var TemplatePathRegistryInterface
      */
-    private $templateNameResolver;
+    private $templatePathRegistry;
 
-    public function __construct(\Twig_Profiler_Profile $profile, TemplateNameResolverInterface $templateNameResolver)
+    public function __construct(\Twig_Profiler_Profile $profile, TemplatePathRegistryInterface $templatePathRegistry)
     {
         parent::__construct($profile);
-        $this->templateNameResolver = $templateNameResolver;
+        $this->templatePathRegistry = $templatePathRegistry;
     }
 
-    private function getTemplateNameResolver()
+    private function getTemplatePathRegistry()
     {
-        if (!isset($this->templateNameResolver)) {
-            $this->templateNameResolver = unserialize($this->data['template_name_resolver']);
+        if (!isset($this->templatePathRegistry)) {
+            $this->templatePathRegistry = unserialize($this->data['template_path_registry']);
         }
 
-        return $this->templateNameResolver;
+        return $this->templatePathRegistry;
     }
 
     public function collect(Request $request, Response $response, \Exception $exception = null)
@@ -45,7 +45,7 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
     public function lateCollect()
     {
         parent::lateCollect();
-        $this->data['template_name_resolver'] = serialize($this->templateNameResolver);
+        $this->data['template_path_registry'] = serialize($this->templatePathRegistry);
     }
 
     public function getTime()
@@ -60,8 +60,12 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
 
     public function getTemplates()
     {
-        $resolver = $this->getTemplateNameResolver();
-        $templates = parent::getTemplates();
+        $registry = $this->getTemplatePathRegistry();
+        $templates = [];
+        foreach (parent::getTemplates() as $template => $count) {
+            $templates[sprintf('%s (%s)', $template, $registry->getTemplatePath($template))] = $count;
+        }
+
         return $templates;
     }
 
@@ -82,6 +86,7 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
 
     public function getProfile()
     {
-        return parent::getProfile();
+        $profile = parent::getProfile();
+        return $profile;
     }
 }

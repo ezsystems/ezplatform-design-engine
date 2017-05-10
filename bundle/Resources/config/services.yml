@@ -15,12 +15,17 @@ services:
         arguments: ["$design;ezdesign$"]
         lazy: true
 
+    ezdesign.template_path_registry:
+        class: EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistry
+        arguments: ["%kernel.root_dir%"]
+
     ezdesign.twig_theme_loader:
         class: EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigThemeLoader
         public: false
         decorates: twig.loader.filesystem
         arguments:
             - "@ezdesign.template_name_resolver"
+            - "@ezdesign.template_path_registry"
             - "@ezdesign.twig_theme_loader.inner"
             - "@templating.locator"
             - "@templating.name_parser"

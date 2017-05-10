@@ -9,6 +9,8 @@
 
 namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler;
 
+use EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigEnvironment;
+use EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigLegacyEnvironment;
 use EzSystems\EzPlatformDesignEngineBundle\DataCollector\TwigDataCollector;
 use ReflectionClass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -94,5 +96,9 @@ class TwigThemePass implements CompilerPassInterface
             array_merge($themesList, array_keys($themesPathMap)))
         );
         $container->setParameter('ezdesign.templates_path_map', $themesPathMap);
+
+        $container->findDefinition('data_collector.twig')
+            ->setClass(TwigDataCollector::class)
+            ->addArgument(new Reference('ezdesign.template_path_registry'));
     }
 }
