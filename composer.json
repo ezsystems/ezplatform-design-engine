@@ -3,7 +3,6 @@
     "description": "Design fallback mechanism for eZ Platform",
     "license": "MIT",
     "type": "ezplatform-bundle",
-    "version": "0.1",
     "authors": [
         {
             "name": "Jerome Vieilledent",
