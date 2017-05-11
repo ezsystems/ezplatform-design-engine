@@ -58,7 +58,7 @@ class ProvisionedPathResolverTest extends PHPUnit_Framework_TestCase
         $expected = 'some/path/images/some_image.jpg';
         $assetLogicalPath = 'images/some_image.jpg';
         $resolvedPaths = [
-            'foo' => [$assetLogicalPath => $expected]
+            'foo' => [$assetLogicalPath => $expected],
         ];
         $design = 'foo';
 

@@ -19,7 +19,7 @@ interface TemplatePathRegistryInterface
      * Adds a template path mapping to the registry.
      *
      * @param string $templateName The template logical name
-     * @param string $path Template path
+     * @param string $path         Template path
      */
     public function mapTemplatePath($templateName, $path);
 
@@ -27,6 +27,7 @@ interface TemplatePathRegistryInterface
      * Returns path for given template.
      *
      * @param string $templateName
+     *
      * @return string
      */
     public function getTemplatePath($templateName);

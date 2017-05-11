@@ -75,6 +75,7 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
      * e.g. "assets/", which is both an override dir and where app level themes can be defined.
      *
      * @param string $themePath
+     *
      * @return array
      */
     private function computeLogicalPathFromPhysicalAssets($themePath)

@@ -18,8 +18,8 @@ interface AssetPathResolverInterface
     /**
      * Resolves provided asset path within provided design and returns correct asset path.
      *
-     * @param string $path Asset path to resolve.
-     * @param string $design Design to resolve path for.
+     * @param string $path   Asset path to resolve
+     * @param string $design Design to resolve path for
      *
      * @return string
      */

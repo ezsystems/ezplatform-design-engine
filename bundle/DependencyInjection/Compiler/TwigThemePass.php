@@ -9,8 +9,6 @@
 
 namespace EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler;
 
-use EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigEnvironment;
-use EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigLegacyEnvironment;
 use EzSystems\EzPlatformDesignEngineBundle\DataCollector\TwigDataCollector;
 use ReflectionClass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -32,7 +30,7 @@ class TwigThemePass implements CompilerPassInterface
             return;
         }
 
-        $globalViewsDir = $container->getParameter('kernel.root_dir').'/Resources/views';
+        $globalViewsDir = $container->getParameter('kernel.root_dir') . '/Resources/views';
         if (!is_dir($globalViewsDir)) {
             (new Filesystem())->mkdir($globalViewsDir);
         }
@@ -46,8 +44,8 @@ class TwigThemePass implements CompilerPassInterface
         // Look for themes in bundles.
         foreach ($container->getParameter('kernel.bundles') as $bundleName => $bundleClass) {
             $bundleReflection = new ReflectionClass($bundleClass);
-            $bundleViewsDir = dirname($bundleReflection->getFileName()).'/Resources/views';
-            $themeDir = $bundleViewsDir.'/themes';
+            $bundleViewsDir = dirname($bundleReflection->getFileName()) . '/Resources/views';
+            $themeDir = $bundleViewsDir . '/themes';
             if (!is_dir($themeDir)) {
                 continue;
             }
@@ -60,7 +58,7 @@ class TwigThemePass implements CompilerPassInterface
 
         $twigLoaderDef = $container->findDefinition('ezdesign.twig_theme_loader');
         // Now look for themes at application level (app/Resources/views/themes)
-        $appLevelThemesDir = $globalViewsDir.'/themes';
+        $appLevelThemesDir = $globalViewsDir . '/themes';
         if (is_dir($appLevelThemesDir)) {
             foreach ((new Finder())->directories()->in($appLevelThemesDir)->depth('== 0') as $directoryInfo) {
                 $theme = $directoryInfo->getBasename();

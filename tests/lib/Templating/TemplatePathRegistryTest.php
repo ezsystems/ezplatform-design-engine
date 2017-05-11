@@ -16,14 +16,14 @@ class TemplatePathRegistryTest extends PHPUnit_Framework_TestCase
 {
     private function getExpectedRelativePath($templateFullPath, $kernelRootDir)
     {
-        return str_replace(dirname($kernelRootDir).'/', '', $templateFullPath);
+        return str_replace(dirname($kernelRootDir) . '/', '', $templateFullPath);
     }
 
     public function testMapTemplatePath()
     {
         $kernelRootDir = __DIR__;
         $templateLogicalName = '@foo/bar.html.twig';
-        $templateFullPath = $kernelRootDir.'/'.$templateLogicalName;
+        $templateFullPath = $kernelRootDir . '/' . $templateLogicalName;
 
         $registry = new TemplatePathRegistry($kernelRootDir);
         self::assertSame([], $registry->getPathMap());
@@ -38,7 +38,7 @@ class TemplatePathRegistryTest extends PHPUnit_Framework_TestCase
     {
         $kernelRootDir = __DIR__;
         $templateLogicalName = '@foo/bar.html.twig';
-        $templateFullPath = $kernelRootDir.'/'.$templateLogicalName;
+        $templateFullPath = $kernelRootDir . '/' . $templateLogicalName;
 
         $registry = new TemplatePathRegistry($kernelRootDir);
         $registry->mapTemplatePath($templateLogicalName, $templateFullPath);

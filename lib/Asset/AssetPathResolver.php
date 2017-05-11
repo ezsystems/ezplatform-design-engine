@@ -43,14 +43,14 @@ class AssetPathResolver implements AssetPathResolverInterface
         }
 
         foreach ($this->designPaths[$design] as $tryPath) {
-            if (file_exists($this->webRootDir.'/'.$tryPath.'/'.$path)) {
-                return $tryPath.'/'.$path;
+            if (file_exists($this->webRootDir . '/' . $tryPath . '/' . $path)) {
+                return $tryPath . '/' . $path;
             }
         }
 
         if ($this->logger) {
             $this->logger->warning(
-                "Asset '$path' cannot be found in any configured themes.\nTried directories: ".implode(
+                "Asset '$path' cannot be found in any configured themes.\nTried directories: " . implode(
                     ', ',
                     array_values($this->designPaths[$design])
                 )

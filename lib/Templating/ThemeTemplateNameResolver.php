@@ -12,7 +12,7 @@ namespace EzSystems\EzPlatformDesignEngine\Templating;
 class ThemeTemplateNameResolver implements TemplateNameResolverInterface
 {
     /**
-     * @var string Name of the current design, in the current context (e.g. SiteAccess).
+     * @var string Name of the current design, in the current context (e.g. SiteAccess)
      */
     private $currentDesign;
 
@@ -36,11 +36,11 @@ class ThemeTemplateNameResolver implements TemplateNameResolverInterface
             return $this->resolvedTemplateNames[$name];
         }
 
-        return $this->resolvedTemplateNames[$name] = str_replace('@'.self::EZ_DESIGN_NAMESPACE, '@'.$this->currentDesign, $name);
+        return $this->resolvedTemplateNames[$name] = str_replace('@' . self::EZ_DESIGN_NAMESPACE, '@' . $this->currentDesign, $name);
     }
 
     public function isTemplateDesignNamespaced($name)
     {
-        return (strpos($name, '@'.self::EZ_DESIGN_NAMESPACE) !== false) || (strpos($name, '@'.$this->currentDesign) !== false);
+        return (strpos($name, '@' . self::EZ_DESIGN_NAMESPACE) !== false) || (strpos($name, '@' . $this->currentDesign) !== false);
     }
 }

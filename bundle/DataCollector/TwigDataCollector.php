@@ -87,6 +87,7 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
     public function getProfile()
     {
         $profile = parent::getProfile();
+
         return $profile;
     }
 }

@@ -44,7 +44,7 @@ class PHPStormPass implements CompilerPassInterface
         }
 
         (new Filesystem())->dumpFile(
-            $twigConfigPath.'/ide-twig.json',
+            $twigConfigPath . '/ide-twig.json',
             json_encode(['namespaces' => $pathConfig], JSON_UNESCAPED_SLASHES)
         );
     }
@@ -52,8 +52,9 @@ class PHPStormPass implements CompilerPassInterface
     /**
      * Converts absolute $path to a path relative to ide-twig.json config file.
      *
-     * @param string $path Absolute path
+     * @param string $path       Absolute path
      * @param string $configPath Absolute path where ide-twig.json is stored
+     *
      * @return string
      */
     private function makeTwigPathRelative($path, $configPath)

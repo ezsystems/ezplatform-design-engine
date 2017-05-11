@@ -20,7 +20,7 @@ interface TemplateNameResolverInterface
     /**
      * Resolves provided template name within current design and returns properly namespaced template name.
      *
-     * @param string $name Template name to resolve.
+     * @param string $name Template name to resolve
      *
      * @return string
      */
@@ -30,6 +30,7 @@ interface TemplateNameResolverInterface
      * Checks if provided template name is using @ezdesign namespace.
      *
      * @param string $name
+     *
      * @return bool
      */
     public function isTemplateDesignNamespaced($name);

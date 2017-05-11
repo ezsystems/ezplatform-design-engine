@@ -37,7 +37,7 @@ class ThemePackageTest extends PHPUnit_Framework_TestCase
     public function testGetUrl()
     {
         $assetPath = 'images/foo.png';
-        $fullAssetPath = 'assets/'.$assetPath;
+        $fullAssetPath = 'assets/' . $assetPath;
         $currentDesign = 'foo';
 
         $this->assetPathResolver
@@ -59,7 +59,7 @@ class ThemePackageTest extends PHPUnit_Framework_TestCase
     public function testGetVersion()
     {
         $assetPath = 'images/foo.png';
-        $fullAssetPath = 'assets/'.$assetPath;
+        $fullAssetPath = 'assets/' . $assetPath;
         $currentDesign = 'foo';
 
         $this->assetPathResolver

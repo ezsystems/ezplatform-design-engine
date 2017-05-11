@@ -31,8 +31,8 @@ class AssetThemePass implements CompilerPassInterface
         // Look for assets themes in bundles.
         foreach ($container->getParameter('kernel.bundles') as $bundleName => $bundleClass) {
             $bundleReflection = new \ReflectionClass($bundleClass);
-            $bundleViewsDir = dirname($bundleReflection->getFileName()).'/Resources/public';
-            $themeDir = $bundleViewsDir.'/themes';
+            $bundleViewsDir = dirname($bundleReflection->getFileName()) . '/Resources/public';
+            $themeDir = $bundleViewsDir . '/themes';
             if (!is_dir($themeDir)) {
                 continue;
             }
@@ -41,18 +41,18 @@ class AssetThemePass implements CompilerPassInterface
             foreach ($finder->directories()->in($themeDir)->depth('== 0') as $directoryInfo) {
                 $theme = $directoryInfo->getBasename();
                 $bundleAssetDir = strtolower(substr($bundleName, 0, strripos($bundleName, 'bundle')));
-                $themesPathMap[$theme][] = 'bundles/'.$bundleAssetDir.'/themes/'.$theme;
+                $themesPathMap[$theme][] = 'bundles/' . $bundleAssetDir . '/themes/' . $theme;
             }
         }
 
         // Look for assets themes at application level (web/assets/themes).
-        $appLevelThemeDir = $container->getParameter('webroot_dir').'/assets/themes';
+        $appLevelThemeDir = $container->getParameter('webroot_dir') . '/assets/themes';
         if (is_dir($appLevelThemeDir)) {
             foreach ((new Finder())->directories()->in($appLevelThemeDir)->depth('== 0') as $directoryInfo) {
                 $theme = $directoryInfo->getBasename();
                 $themePaths = isset($themesPathMap[$theme]) ? $themesPathMap[$theme] : [];
                 // Application level paths are always top priority.
-                array_unshift($themePaths, 'assets/themes/'.$theme);
+                array_unshift($themePaths, 'assets/themes/' . $theme);
                 $themesPathMap[$theme] = $themePaths;
             }
         }

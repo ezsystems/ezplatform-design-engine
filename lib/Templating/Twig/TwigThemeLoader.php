@@ -16,7 +16,6 @@ use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\Templating\TemplateNameParserInterface;
 use Twig_ExistsLoaderInterface;
 use Twig_LoaderInterface;
-use Twig_Source;
 
 /**
  * Proxy to regular Twig FilesystemLoader.
@@ -49,8 +48,7 @@ class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, 
         Twig_LoaderInterface $innerFilesystemLoader,
         FileLocatorInterface $locator,
         TemplateNameParserInterface $parser
-    )
-    {
+    ) {
         $this->innerFilesystemLoader = $innerFilesystemLoader;
         $this->nameResolver = $templateNameResolver;
         $this->pathRegistry = $templatePathRegistry;

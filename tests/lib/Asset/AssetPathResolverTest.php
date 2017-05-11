@@ -112,7 +112,7 @@ class AssetPathResolverTest extends PHPUnit_Framework_TestCase
         $webrootDir = vfsStream::setup('web');
         foreach ($designPaths['foo'] as $designPath) {
             if (in_array($designPath, $existingPaths)) {
-                $fileInfo = new \SplFileInfo($designPath.'/'.$path);
+                $fileInfo = new \SplFileInfo($designPath . '/' . $path);
                 $parent = $webrootDir;
                 foreach (explode('/', $fileInfo->getPath()) as $dir) {
                     if (!$parent->hasChild($dir)) {
