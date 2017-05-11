@@ -22,7 +22,7 @@ composer require ezsystems/ezplatform-design-engine
 Then add it to your application:
 
 ```php
-// ezpublish/EzPublishKernel.php
+// app/AppKernel.php
 
 public function registerBundles()
 {
