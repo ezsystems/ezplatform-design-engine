@@ -35,4 +35,5 @@ public function registerBundles()
 ```
 
 ## Documentation
-See [Resources/doc/](Resources/doc)
+See [doc/](doc)
+

@@ -23,6 +23,7 @@ return PhpCsFixer\Config::create()
             ->in(__DIR__)
             ->exclude([
                 'vendor',
+                'doc',
             ])
             ->files()->name('*.php')
     )
