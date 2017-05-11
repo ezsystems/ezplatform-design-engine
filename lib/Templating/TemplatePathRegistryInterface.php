@@ -30,4 +30,11 @@ interface TemplatePathRegistryInterface
      * @return string
      */
     public function getTemplatePath($templateName);
+
+    /**
+     * Returns the whole hash map.
+     *
+     * @return array
+     */
+    public function getPathMap();
 }
