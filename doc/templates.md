@@ -45,11 +45,10 @@ Default fallback order is the following:
 It is possible to add addition global override directories, similar to `app/Resources/views/`.
 
 ```yaml
-ezpublish:
-    design:
-        template_override_paths:
-            - "%kernel.root_dir%/another_override_directory"
-            - "/some/other/directory"
+ezdesign:
+    template_override_paths:
+        - "%kernel.root_dir%/another_override_directory"
+        - "/some/other/directory"
 ```
 
 > `app/Resources/views/` will **always** be the top level override directory.
@@ -68,13 +67,12 @@ if your PHPStorm project root doesn't match your Symfony project root.
 
 Default config:
 ```yaml
-ezpublish:
-    design:
-        phpstorm:
-    
-            # Activates PHPStorm support
-            enabled:              '%kernel.debug%'
-    
-            # Path where to store PHPStorm configuration file for additional Twig namespaces (ide-twig.json).
-            twig_config_path:     '%kernel.root_dir%/..'
+ezdesign:
+    phpstorm:
+
+        # Activates PHPStorm support
+        enabled:              '%kernel.debug%'
+
+        # Path where to store PHPStorm configuration file for additional Twig namespaces (ide-twig.json).
+        twig_config_path:     '%kernel.root_dir%/..'
 ```

@@ -12,8 +12,7 @@ parameters:
 services:
     ezdesign.template_name_resolver:
         class: EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver
-        arguments: ["$design;ezdesign$"]
-        lazy: true
+        arguments: ["$design$"]
 
     ezdesign.template_path_registry:
         class: EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistry
@@ -54,4 +53,4 @@ services:
             - "@ezdesign.asset_path_resolver"
             - "@assets._default_package"
         calls:
-            - [setCurrentDesign, ["$design;ezdesign"]]
+            - [setCurrentDesign, ["$design$"]]

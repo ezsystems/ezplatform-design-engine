@@ -44,32 +44,14 @@ class EzPlatformDesignEngineExtension extends Extension
 
     private function configureDesigns(array $config, ConfigurationProcessor $processor, ContainerBuilder $container)
     {
-        // Always add _base theme to the list.
-        foreach ($config['design']['list'] as $design => &$themes) {
-            $themes[] = '_base';
-        }
-        $container->setParameter('ezdesign.design_list', $config['design']['list']);
-        $container->setParameter('ezdesign.templates_override_paths', $config['design']['override_paths']);
-        $container->setParameter('ezdesign.asset_resolution.disabled', $config['design']['disable_assets_pre_resolution']);
+        // Always add "standard" design to the list (defaults to application level & override paths only)
+        $config['design_list'] += ['standard' => []];
+        $container->setParameter('ezdesign.design_list', $config['design_list']);
+        $container->setParameter('ezdesign.templates_override_paths', $config['template_override_paths']);
+        $container->setParameter('ezdesign.asset_resolution.disabled', $config['disable_assets_pre_resolution']);
 
         // PHPStorm settings
         $container->setParameter('ezdesign.phpstorm.enabled', $config['phpstorm']['enabled']);
         $container->setParameter('ezdesign.phpstorm.twig_config_path', $config['phpstorm']['twig_config_path']);
-
-        // SiteAccess aware settings
-        $processor->mapConfig(
-            $config,
-            function ($scopeSettings, $currentScope, ContextualizerInterface $contextualizer) use ($config) {
-                if (isset($scopeSettings['design'])) {
-                    if (!isset($config['design']['list'][$scopeSettings['design']])) {
-                        throw new InvalidArgumentException(
-                            "Selected design for $currentScope '{$scopeSettings['design']}' is invalid. Did you forget to define it?"
-                        );
-                    }
-
-                    $contextualizer->setContextualParameter('design', $currentScope, $scopeSettings['design']);
-                }
-            }
-        );
     }
 }

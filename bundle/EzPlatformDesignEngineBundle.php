@@ -13,6 +13,7 @@ use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetPat
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetThemePass;
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\PHPStormPass;
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\TwigThemePass;
+use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\DesignConfigParser;
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\EzPlatformDesignEngineExtension;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -23,6 +24,12 @@ class EzPlatformDesignEngineBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
+
+        /** @var \eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension $eZExtension */
+        $eZExtension = $container->getExtension('ezpublish');
+        $eZExtension->addConfigParser(new DesignConfigParser());
+        $eZExtension->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yml']);
+
         $container->addCompilerPass(new TwigThemePass());
         $container->addCompilerPass(new AssetThemePass(), PassConfig::TYPE_OPTIMIZE);
         $container->addCompilerPass(new AssetPathResolutionPass(), PassConfig::TYPE_OPTIMIZE);

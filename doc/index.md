@@ -25,19 +25,44 @@ To define and use a design, you need to:
 
 Here is a simple example:
 ```yaml
+# ezplatform.yml
+ezdesign:
+    # You declare every available designs under "design_list".
+    design_list:
+        # my_design will be composed of "theme1" and "theme2"
+        # "theme1" will be the first tried. If the template cannot be found in "theme1", "theme2" will be tried out.
+        my_design: [theme1, theme2]
+            
 ezpublish:
-    design:
-        # You declare every available designs under "list".
-        list:
-            # my_design will be composed of "theme1" and "theme2"
-            # "theme1" will be the first tried. If the template cannot be found in "theme1", "theme2" will be tried out.
-            my_design: [theme1, theme2]
+    # ...
     system:
         my_siteaccess:
             # my_siteaccess will use "my_design"
             design: my_design
 ```
 
+> **Note**: Default design for a SiteAccess is `standard` which contains no themes.
+> If one is using `@ezdesign` Twig namespace and/or `ezdesign` asset package, the system will always fallback to
+> application level and override directories for templates/assets lookup.
+
 ## Usage
 * [Usage with templates](templates.md)
 * [Usage with assets](assets.md)
+
+## Referencing current design
+It is possible to reference current design in order to inject it into a service.
+To do so, one just need to reference `$design$` dynamic setting:
+
+```yaml
+services:
+    my_service:
+        class: Foo\Bar
+        arguments: ["$design$"]
+```
+
+It is also possible to use the `ConfigResolver` service (`ezpublish.config.resolver`):
+
+```php
+// In a controller
+$currentDesign = $this->getConfigResolver->getParameter('design');
+```

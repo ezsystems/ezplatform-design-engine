@@ -48,9 +48,8 @@ This behavior can however be controlled by `disable_assets_pre_resolution` setti
 
 ```yaml
 # ezplatform_prod.yml
-ezpublish:
-    design:
-        # Force runtime resolution
-        # Default value is '%kernel.debug%'
-        disable_assets_pre_resolution: true
+ezdesign:
+    # Force runtime resolution
+    # Default value is '%kernel.debug%'
+    disable_assets_pre_resolution: true
 ```
