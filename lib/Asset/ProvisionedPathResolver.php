@@ -80,6 +80,10 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
      */
     private function computeLogicalPathFromPhysicalAssets($themePath)
     {
+        if (!is_dir($themePath)) {
+            return [];
+        }
+
         $logicalPaths = [];
         /** @var \SplFileInfo $fileInfo */
         foreach ((new Finder())->files()->in($themePath)->exclude('themes')->followLinks()->ignoreUnreadableDirs() as $fileInfo) {

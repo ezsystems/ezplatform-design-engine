@@ -74,6 +74,7 @@ class ProvisionedPathResolverTest extends PHPUnit_Framework_TestCase
             'assets/themes/theme1',
             'assets/themes/theme2',
             'assets/themes/theme3',
+            'non_existing_directory',
         ];
         $physicalAssets = [
             'assets/themes/theme1/images/foo.png',
