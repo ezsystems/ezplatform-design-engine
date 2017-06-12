@@ -29,5 +29,8 @@
             "EzSystems\\EzPlatformDesignEngineBundle\\": "bundle",
             "EzSystems\\EzPlatformDesignEngineBundle\\Tests\\": "tests/bundle"
         }
+    },
+    "conflict": {
+        "lolautruche/ez-core-extra-bundle": "<2.0"
     }
 }
