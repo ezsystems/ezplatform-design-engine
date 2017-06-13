@@ -68,7 +68,7 @@ class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, 
 
     public function getSourceContext($name)
     {
-        $source = $this->innerFilesystemLoader->getSourceContext($this->nameResolver->resolveTemplateName($name));
+        $source = $this->innerFilesystemLoader->getSourceContext($this->nameResolver->resolveTemplateName((string)$name));
         $this->pathRegistry->mapTemplatePath($source->getName(), $source->getPath());
 
         return $source;
