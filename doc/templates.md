@@ -1,21 +1,20 @@
 # Design usage with templates
 
-By convention, a theme directory must be located under `<bundle_directory>/Resources/views/themes/` or global
-`app/Resources/views/themes/` directories.
+By convention, a theme directory must be located under `<bundle_directory>/Resources/views/themes/` or global `app/Resources/views/themes/` directories.
 
 Typical paths can be for example:
-* `app/Resources/views/themes/foo/` => Templates will be part of `foo` theme.
-* `app/Resources/views/themes/bar/` => Templates will be part of `bar` theme.
-* `src/AppBundle/Resources/views/themes/foo/` => Templates will be part of `foo`theme.
-* `src/Acme/TestBundle/Resources/views/themes/the_best/` => Templates will be part of `the_best` theme.
+- `app/Resources/views/themes/foo/` => Templates will be part of the `foo` theme.
+- `app/Resources/views/themes/bar/` => Templates will be part of the `bar` theme.
+- `src/AppBundle/Resources/views/themes/foo/` => Templates will be part of the `foo`theme.
+- `src/Acme/TestBundle/Resources/views/themes/the_best/` => Templates will be part of `the_best` theme.
 
 In order to use the configured design with templates, you need to use **`@ezdesign`** special **Twig namespace**.
 
 ```jinja
-{# Will load 'some_template.html.twig' directly under one of the specified themes directories #}
+{# Will load 'some_template.html.twig' directly under one of the specified theme directories #}
 {{ include("@ezdesign/some_template.html.twig") }}
 
-{# Will load 'another_template.html.twig', located under 'full/' directory, which is located under one of the specified themes directories #}
+{# Will load 'another_template.html.twig', located under 'full/' directory, which is located under one of the specified theme directories #}
 {{ include("@ezdesign/full/another_template.html.twig") }}
 ```
 
@@ -34,10 +33,11 @@ ezpublish:
 > You may also use this notation in controllers.
 
 ## Fallback order
-Default fallback order is the following:
-* Application view directory: `app/Resources/views/`
-* Application theme directory: `app/Resources/views/themes/<theme_name>/`
-* Bundle theme directory: `src/<bundle_directory>/Resources/views/themes/<theme_name>/`
+
+The default fallback order is:
+- Application view directory: `app/Resources/views/`
+- Application theme directory: `app/Resources/views/themes/<theme_name>/`
+- Bundle theme directory: `src/<bundle_directory>/Resources/views/themes/<theme_name>/`
 
 > Bundle fallback order is the instantiation order in `AppKernel`.
 
@@ -61,7 +61,8 @@ ezdesign:
 > in config. This ensures that it is always possible to override a template from the application.
 
 ### Additional override paths
-It is possible to add addition global override directories, similar to `app/Resources/views/`.
+
+It is possible to add additional global override directories, similar to `app/Resources/views/`.
 
 ```yaml
 ezdesign:
@@ -73,14 +74,12 @@ ezdesign:
 > `app/Resources/views/` will **always** be the top level override directory.
 
 ## PHPStorm support
-`@ezdesign` Twig namespace is a *virtual* namespace, and as such is not automatically recognized by PHPStorm Symfony plugin 
-for `goto` actions.
 
-`EzPlatformDesignEngine` will generate a `ide-twig.json` file which will contain all detected theme paths for templates in your project.
-It is activated by default in debug mode (`%kernel.debug%`).
+`@ezdesign` Twig namespace is a *virtual* namespace, and as such is not automatically recognized by PHPStorm Symfony plugin for `goto` actions.
 
-By default, this config file will be stored at your project root (`%kernel.root_dir%/..`), but you can customize the path 
-if your PHPStorm project root doesn't match your Symfony project root.
+`EzPlatformDesignEngine` will generate a `ide-twig.json` file which will contain all detected theme paths for templates in your project. It is activated by default in debug mode (`%kernel.debug%`).
+
+By default, this config file will be stored at your project root (`%kernel.root_dir%/..`), but you can customize the path if your PHPStorm project root doesn't match your Symfony project root.
 
 > Note: `ide-twig.json` **must** be stored at your PHPStorm project root.
 
