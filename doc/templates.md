@@ -1,6 +1,7 @@
 # Design usage with templates
 
-By convention, a theme directory must be located under `<bundle_directory>/Resources/views/themes/` or global `app/Resources/views/themes/` directories.
+By convention, a theme directory must be located under `<bundle_directory>/Resources/views/themes/` or global
+`app/Resources/views/themes/` directories.
 
 Typical paths can be for example:
 - `app/Resources/views/themes/foo/` => Templates will be part of the `foo` theme.
@@ -75,11 +76,14 @@ ezdesign:
 
 ## PHPStorm support
 
-`@ezdesign` Twig namespace is a *virtual* namespace, and as such is not automatically recognized by PHPStorm Symfony plugin for `goto` actions.
+`@ezdesign` Twig namespace is a *virtual* namespace, and as such is not automatically recognized by PHPStorm Symfony plugin
+for `goto` actions.
 
-`EzPlatformDesignEngine` will generate a `ide-twig.json` file which will contain all detected theme paths for templates in your project. It is activated by default in debug mode (`%kernel.debug%`).
+`EzPlatformDesignEngine` will generate a `ide-twig.json` file which will contain all detected theme paths for templates in your project.
+It is activated by default in debug mode (`%kernel.debug%`).
 
-By default, this config file will be stored at your project root (`%kernel.root_dir%/..`), but you can customize the path if your PHPStorm project root doesn't match your Symfony project root.
+By default, this config file will be stored at your project root (`%kernel.root_dir%/..`), but you can customize the path
+if your PHPStorm project root doesn't match your Symfony project root.
 
 > Note: `ide-twig.json` **must** be stored at your PHPStorm project root.
 
