@@ -12,9 +12,9 @@ namespace EzSystems\EzPlatformDesignEngine;
 interface DesignAwareInterface
 {
     /**
-     * Injects current design.
+     * Returns current design.
      *
-     * @param string $currentDesign
+     * @return string
      */
-    public function setCurrentDesign($currentDesign);
+    public function getCurrentDesign();
 }

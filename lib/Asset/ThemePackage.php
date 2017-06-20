@@ -35,11 +35,11 @@ class ThemePackage implements PackageInterface, DesignAwareInterface
 
     public function getUrl($path)
     {
-        return $this->innerPackage->getUrl($this->pathResolver->resolveAssetPath($path, $this->currentDesign));
+        return $this->innerPackage->getUrl($this->pathResolver->resolveAssetPath($path, $this->getCurrentDesign()));
     }
 
     public function getVersion($path)
     {
-        return $this->innerPackage->getVersion($this->pathResolver->resolveAssetPath($path, $this->currentDesign));
+        return $this->innerPackage->getVersion($this->pathResolver->resolveAssetPath($path, $this->getCurrentDesign()));
     }
 }
