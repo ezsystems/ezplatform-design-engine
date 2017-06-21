@@ -13,9 +13,9 @@ use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver;
 use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface;
 use EzSystems\EzPlatformDesignEngine\Asset\ProvisionedPathResolver;
 use org\bovigo\vfs\vfsStream;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class ProvisionedPathResolverTest extends PHPUnit_Framework_TestCase
+class ProvisionedPathResolverTest extends TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject|AssetPathResolverInterface

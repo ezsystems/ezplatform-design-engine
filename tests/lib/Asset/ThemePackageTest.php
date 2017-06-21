@@ -11,10 +11,10 @@ namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
 
 use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface;
 use EzSystems\EzPlatformDesignEngine\Asset\ThemePackage;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Asset\PackageInterface;
 
-class ThemePackageTest extends PHPUnit_Framework_TestCase
+class ThemePackageTest extends TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject|\EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface

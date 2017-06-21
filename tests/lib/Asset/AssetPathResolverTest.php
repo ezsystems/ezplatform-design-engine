@@ -10,11 +10,11 @@
 namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
 
 use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
 use Psr\Log\LoggerInterface;
 
-class AssetPathResolverTest extends PHPUnit_Framework_TestCase
+class AssetPathResolverTest extends TestCase
 {
     public function testResolveAssetPathFail()
     {
