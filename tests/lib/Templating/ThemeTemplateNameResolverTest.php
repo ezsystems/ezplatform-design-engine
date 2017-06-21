@@ -10,9 +10,9 @@
 namespace EzSystems\EzPlatformDesignEngine\Tests\Templating;
 
 use EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class ThemeTemplateNameResolverTest extends PHPUnit_Framework_TestCase
+class ThemeTemplateNameResolverTest extends TestCase
 {
     public function templateNameProvider()
     {

@@ -10,9 +10,9 @@
 namespace EzSystems\EzPlatformDesignEngine\Tests\Templating;
 
 use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistry;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class TemplatePathRegistryTest extends PHPUnit_Framework_TestCase
+class TemplatePathRegistryTest extends TestCase
 {
     private function getExpectedRelativePath($templateFullPath, $kernelRootDir)
     {
