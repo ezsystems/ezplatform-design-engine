@@ -1,6 +1,6 @@
 # EzPlatformDesignEngine
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4c330566-a5a9-45c1-82a5-00d781f355a0/mini.png)](https://insight.sensiolabs.com/projects/4c330566-a5a9-45c1-82a5-00d781f355a0)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/9423927d-ce0f-4cc2-b521-287006608f10/mini.png)](https://insight.sensiolabs.com/projects/9423927d-ce0f-4cc2-b521-287006608f10)
 [![Build Status](https://travis-ci.org/ezsystems/ezplatform-design-engine.svg?branch=master)](https://travis-ci.org/ezsystems/ezplatform-design-engine)
 
 Design fallback system for eZ Platform similar to
