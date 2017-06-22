@@ -9,6 +9,7 @@
 
 namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
 
+use eZ\Publish\Core\MVC\ConfigResolverInterface;
 use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface;
 use EzSystems\EzPlatformDesignEngine\Asset\ThemePackage;
 use PHPUnit\Framework\TestCase;
@@ -26,12 +27,18 @@ class ThemePackageTest extends TestCase
      */
     private $innerPackage;
 
+    /**
+     * @var \PHPUnit_Framework_MockObject_MockObject|\eZ\Publish\Core\MVC\ConfigResolverInterface
+     */
+    private $configResolver;
+
     protected function setUp()
     {
         parent::setUp();
 
         $this->assetPathResolver = $this->createMock(AssetPathResolverInterface::class);
         $this->innerPackage = $this->createMock(PackageInterface::class);
+        $this->configResolver = $this->createMock(ConfigResolverInterface::class);
     }
 
     public function testGetUrl()
@@ -50,9 +57,13 @@ class ThemePackageTest extends TestCase
             ->method('getUrl')
             ->with($fullAssetPath)
             ->willReturn("/$fullAssetPath");
+        $this->configResolver
+            ->method('getParameter')
+            ->with('design')
+            ->willReturn($currentDesign);
 
         $package = new ThemePackage($this->assetPathResolver, $this->innerPackage);
-        $package->setCurrentDesign($currentDesign);
+        $package->setConfigResolver($this->configResolver);
         self::assertSame("/$fullAssetPath", $package->getUrl($assetPath));
     }
 
@@ -73,9 +84,13 @@ class ThemePackageTest extends TestCase
             ->method('getVersion')
             ->with($fullAssetPath)
             ->willReturn($version);
+        $this->configResolver
+            ->method('getParameter')
+            ->with('design')
+            ->willReturn($currentDesign);
 
         $package = new ThemePackage($this->assetPathResolver, $this->innerPackage);
-        $package->setCurrentDesign($currentDesign);
+        $package->setConfigResolver($this->configResolver);
         self::assertSame($version, $package->getVersion($assetPath));
     }
 }

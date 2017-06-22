@@ -9,11 +9,24 @@
 
 namespace EzSystems\EzPlatformDesignEngine\Tests\Templating;
 
+use eZ\Publish\Core\MVC\ConfigResolverInterface;
 use EzSystems\EzPlatformDesignEngine\Templating\ThemeTemplateNameResolver;
 use PHPUnit\Framework\TestCase;
 
 class ThemeTemplateNameResolverTest extends TestCase
 {
+    /**
+     * @var \PHPUnit_Framework_MockObject_MockObject|ConfigResolverInterface
+     */
+    private $configResolver;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->configResolver = $this->createMock(ConfigResolverInterface::class);
+    }
+
     public function templateNameProvider()
     {
         return [
@@ -28,7 +41,11 @@ class ThemeTemplateNameResolverTest extends TestCase
      */
     public function testResolveTemplateName($currentDesign, $templateName, $expectedTemplateName)
     {
-        $resolver = new ThemeTemplateNameResolver($currentDesign);
+        $this->configResolver
+            ->method('getParameter')
+            ->with('design')
+            ->willReturn($currentDesign);
+        $resolver = new ThemeTemplateNameResolver($this->configResolver);
         self::assertSame($expectedTemplateName, $resolver->resolveTemplateName($templateName));
     }
 
@@ -47,7 +64,11 @@ class ThemeTemplateNameResolverTest extends TestCase
      */
     public function testIsTemplateDesignNamespaced($currentDesign, $templateName, $expected)
     {
-        $resolver = new ThemeTemplateNameResolver($currentDesign);
+        $this->configResolver
+            ->method('getParameter')
+            ->with('design')
+            ->willReturn($currentDesign);
+        $resolver = new ThemeTemplateNameResolver($this->configResolver);
         self::assertSame($expected, $resolver->isTemplateDesignNamespaced($templateName));
     }
 }

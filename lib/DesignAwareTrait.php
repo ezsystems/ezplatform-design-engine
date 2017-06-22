@@ -9,20 +9,27 @@
 
 namespace EzSystems\EzPlatformDesignEngine;
 
+use eZ\Publish\Core\MVC\ConfigResolverInterface;
+
 trait DesignAwareTrait
 {
     /**
-     * @var string
+     * @var ConfigResolverInterface
      */
-    protected $currentDesign;
+    private $configResolver;
+
+    public function setConfigResolver(ConfigResolverInterface $configResolver)
+    {
+        $this->configResolver = $configResolver;
+    }
 
     /**
-     * Injects the current design.
+     * Returns the current design.
      *
-     * @param string $currentDesign
+     * @return string
      */
-    public function setCurrentDesign($currentDesign)
+    public function getCurrentDesign()
     {
-        $this->currentDesign = $currentDesign;
+        return $this->configResolver->getParameter('design');
     }
 }
