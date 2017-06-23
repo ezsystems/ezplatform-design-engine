@@ -45,7 +45,8 @@ class EzPlatformDesignEngineExtension extends Extension
         // Always add "standard" design to the list (defaults to application level & override paths only)
         $config['design_list'] += ['standard' => []];
         $container->setParameter('ezdesign.design_list', $config['design_list']);
-        $container->setParameter('ezdesign.templates_override_paths', $config['template_override_paths']);
+        $container->setParameter('ezdesign.templates_override_paths', $config['templates_override_paths']);
+        $container->setParameter('ezdesign.templates_path_map', $config['templates_theme_paths']);
         $container->setParameter('ezdesign.asset_resolution.disabled', $config['disable_assets_pre_resolution']);
 
         // PHPStorm settings

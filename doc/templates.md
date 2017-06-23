@@ -41,12 +41,31 @@ Default fallback order is the following:
 
 > Bundle fallback order is the instantiation order in `AppKernel`.
 
+### Additional theme paths
+In addition to the convention described above, it is also possible to add arbitrary Twig templates directories to a theme
+from configuration. This can be useful when you want to define templates from third-party bundles as part of one of your
+themes, or when upgrading your application in order to use eZ Platform design engine, and that your existing templates
+are not yet following the convention.
+
+```yaml
+ezdesign:
+    design_list:
+        my_design: [my_theme, some_other_theme]
+    templates_theme_paths:
+        # FOSUserBundle templates will be part of "my_theme" theme
+        my_theme:
+            - '%kernel.root_dir%/../vendor/friendsofsymfony/user-bundle/Resources/views'
+```
+
+> **Paths precedence**: Directories following the convention will **always** have the precedence over the ones defined
+> in config. This ensures that it is always possible to override a template from the application.
+
 ### Additional override paths
 It is possible to add addition global override directories, similar to `app/Resources/views/`.
 
 ```yaml
 ezdesign:
-    template_override_paths:
+    templates_override_paths:
         - "%kernel.root_dir%/another_override_directory"
         - "/some/other/directory"
 ```

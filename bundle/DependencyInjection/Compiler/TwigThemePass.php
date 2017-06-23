@@ -69,6 +69,10 @@ class TwigThemePass implements CompilerPassInterface
             }
         }
 
+        // Now merge with already configured template theme paths
+        // Template theme paths defined via config will always have less priority than convention based paths
+        $themesPathMap = array_merge_recursive($themesPathMap, $container->getParameter('ezdesign.templates_path_map'));
+
         // De-duplicate the map
         foreach ($themesPathMap as $theme => &$paths) {
             $paths = array_unique($paths);
