@@ -38,9 +38,10 @@ Calling `asset("js/foo.js", "ezdesign")` can for example be resolved to `web/bun
 
 ## Performance and asset resolution
 
-When using themes, paths for assets are resolved at runtime. This is due to how the Symfony Asset component is integrated
-with Twig. This can cause significant performance impact because of I/O calls when looping over all potential theme
-directories, especially when using a lot of different designs and themes.
+When using themes, paths for assets are resolved at runtime.
+This is due to how the Symfony Asset component is integrated with Twig.
+This can cause significant performance impact because of I/O calls when looping over all potential theme directories,
+especially when using a lot of different designs and themes.
 
 To work around this issue, assets resolution can be provisioned at compilation time.
 Provisioning is the **default behavior in non-debug mode** (e.g. `prod` environment).
