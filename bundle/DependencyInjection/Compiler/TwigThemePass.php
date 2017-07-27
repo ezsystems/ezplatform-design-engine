@@ -26,7 +26,7 @@ class TwigThemePass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!($container->hasParameter('kernel.bundles') && $container->hasDefinition('twig.loader.filesystem'))) {
+        if (!($container->hasParameter('kernel.bundles') && $container->hasDefinition('ezdesign.twig_theme_loader'))) {
             return;
         }
 
