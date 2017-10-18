@@ -22,9 +22,9 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
      */
     private $templatePathRegistry;
 
-    public function __construct(\Twig_Profiler_Profile $profile, TemplatePathRegistryInterface $templatePathRegistry)
+    public function __construct(\Twig_Profiler_Profile $profile, \Twig_Environment $environment, TemplatePathRegistryInterface $templatePathRegistry)
     {
-        parent::__construct($profile);
+        parent::__construct($profile, $environment);
         $this->templatePathRegistry = $templatePathRegistry;
     }
 
