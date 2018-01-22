@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/ezsystems/ezplatform-design-engine.svg?style=flat-square&branch=master)](https://travis-ci.org/ezsystems/ezplatform-design-engine)
 [![Downloads](https://img.shields.io/packagist/dt/ezsystems/ezplatform-design-engine.svg?style=flat-square)](https://packagist.org/packages/ezsystems/ezplatform-design-engine)
 [![Latest release](https://img.shields.io/github/release/ezsystems/ezplatform-design-engine.svg?style=flat-square)](https://github.com/ezsystems/ezplatform-design-engine/releases)
-[![License](https://img.shields.io/packagist/l/ezsystems/ezplatform-design-engine.svg?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/github/license/ezsystems/ezplatform-design-engine.svg?style=flat-square)](LICENSE)
 
 Design fallback system for eZ Platform similar to
 [legacy design fallback system](https://doc.ez.no/eZ-Publish/Technical-manual/5.x/Concepts-and-basics/Designs/Design-combinations).
