@@ -5,7 +5,7 @@ For assets, a special **`ezdesign` asset package** is available.
 ```jinja
 <script src="{{ asset("js/foo.js", "ezdesign") }}"></script>
 
-<link rel="stylesheet" href="{{ asset("js/foo.css", "ezdesign") }}" media="screen" />
+<link rel="stylesheet" href="{{ asset("css/foo.css", "ezdesign") }}" media="screen" />
 
 <img src="{{ asset("images/foo.png", "ezdesign") }}" alt="foo"/>
 ```
