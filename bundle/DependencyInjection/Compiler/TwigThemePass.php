@@ -35,10 +35,7 @@ class TwigThemePass implements CompilerPassInterface
             (new Filesystem())->mkdir($globalViewsDir);
         }
         $themesPathMap = [
-            '_override' => array_merge(
-                [$globalViewsDir],
-                $container->getParameter('ezdesign.templates_override_paths')
-            ),
+            '_override' => $container->getParameter('ezdesign.templates_override_paths'),
         ];
         $finder = new Finder();
         // Look for themes in bundles.
