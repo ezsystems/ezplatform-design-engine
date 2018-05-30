@@ -36,9 +36,18 @@ ezpublish:
 ## Fallback order
 
 The default fallback order is:
-- Application view directory: `app/Resources/views/`
 - Application theme directory: `app/Resources/views/themes/<theme_name>/`
 - Bundle theme directory: `src/<bundle_directory>/Resources/views/themes/<theme_name>/`
+
+Prior to version 2.0 of this package, `app/Resources/views` was the top-level global override directory.
+This behavior is not recommended as it could affect both core features and third party bundles 
+which already use `@ezdesign`. However, if still needed, it can be achieved by the following configuration:
+
+```yaml
+ezdesign:
+    templates_override_paths:
+        - '%kernel.root_dir%/app/Resources/views'
+```
 
 > Bundle fallback order is the instantiation order in `AppKernel`.
 
@@ -64,7 +73,7 @@ ezdesign:
 
 ### Additional override paths
 
-It is possible to add additional global override directories, similar to `app/Resources/views/`.
+It is possible to add additional global override directories.
 
 ```yaml
 ezdesign:
@@ -72,8 +81,6 @@ ezdesign:
         - "%kernel.root_dir%/another_override_directory"
         - "/some/other/directory"
 ```
-
-> `app/Resources/views/` will **always** be the top level override directory.
 
 ## PHPStorm support
 
