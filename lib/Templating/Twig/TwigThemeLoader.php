@@ -11,21 +11,16 @@ namespace EzSystems\EzPlatformDesignEngine\Templating\Twig;
 
 use EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface;
 use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface;
-use Symfony\Bundle\TwigBundle\Loader\FilesystemLoader;
-use Symfony\Component\Config\FileLocatorInterface;
-use Symfony\Component\Templating\TemplateNameParserInterface;
-use Twig_ExistsLoaderInterface;
-use Twig_LoaderInterface;
+use Twig\Loader\ExistsLoaderInterface;
+use Twig\Loader\FilesystemLoader;
+use Twig\Loader\LoaderInterface;
+use Twig\Loader\SourceContextLoaderInterface;
 
 /**
- * Proxy to regular Twig FilesystemLoader.
+ * Decorates regular Twig FilesystemLoader.
  * It resolves generic @ezdesign namespace to the actual current namespace.
- *
- * @note It extends \Symfony\Bundle\TwigBundle\Loader\FilesystemLoader because methods specific to this loader
- * (e.g. related to paths and namespaces) are not part of an interface.
- * It also does that by convenience for resolving @ezdesign templates paths in debug mode.
  */
-class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, Twig_ExistsLoaderInterface
+class TwigThemeLoader implements LoaderInterface, ExistsLoaderInterface, SourceContextLoaderInterface
 {
     /**
      * @var TemplateNameResolverInterface
@@ -38,22 +33,18 @@ class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, 
     private $pathRegistry;
 
     /**
-     * @var Twig_LoaderInterface|Twig_ExistsLoaderInterface|\Twig_Loader_Filesystem
+     * @var FilesystemLoader
      */
     private $innerFilesystemLoader;
 
     public function __construct(
         TemplateNameResolverInterface $templateNameResolver,
         TemplatePathRegistryInterface $templatePathRegistry,
-        Twig_LoaderInterface $innerFilesystemLoader,
-        FileLocatorInterface $locator,
-        TemplateNameParserInterface $parser
+        LoaderInterface $innerFilesystemLoader
     ) {
         $this->innerFilesystemLoader = $innerFilesystemLoader;
         $this->nameResolver = $templateNameResolver;
         $this->pathRegistry = $templatePathRegistry;
-
-        parent::__construct($locator, $parser);
     }
 
     public function exists($name)
@@ -84,7 +75,7 @@ class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, 
         return $this->innerFilesystemLoader->isFresh($this->nameResolver->resolveTemplateName($name), $time);
     }
 
-    public function getPaths($namespace = self::MAIN_NAMESPACE)
+    public function getPaths($namespace = FilesystemLoader::MAIN_NAMESPACE)
     {
         return $this->innerFilesystemLoader->getPaths($namespace);
     }
@@ -94,25 +85,18 @@ class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, 
         return $this->innerFilesystemLoader->getNamespaces();
     }
 
-    public function setPaths($paths, $namespace = self::MAIN_NAMESPACE)
+    public function setPaths($paths, $namespace = FilesystemLoader::MAIN_NAMESPACE)
     {
-        parent::setPaths($paths, $namespace);
         $this->innerFilesystemLoader->setPaths($paths, $namespace);
     }
 
-    public function addPath($path, $namespace = self::MAIN_NAMESPACE)
+    public function addPath($path, $namespace = FilesystemLoader::MAIN_NAMESPACE)
     {
-        parent::addPath($path, $namespace);
         $this->innerFilesystemLoader->addPath($path, $namespace);
     }
 
-    public function prependPath($path, $namespace = self::MAIN_NAMESPACE)
+    public function prependPath($path, $namespace = FilesystemLoader::MAIN_NAMESPACE)
     {
         $this->innerFilesystemLoader->prependPath($path, $namespace);
-    }
-
-    public function findTemplate($template, $throw = true)
-    {
-        return parent::findTemplate($template, $throw);
     }
 }
