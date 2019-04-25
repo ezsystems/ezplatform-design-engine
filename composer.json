@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "ezsystems/ezpublish-kernel": "^6.0.0|^7.0",
+        "ezsystems/ezpublish-kernel": "^6.0.0|^7.0|^8.0",
         "twig/twig": "^1.27|^2.0",
         "symfony/symfony": "^2.8.25|^3.1.6|^3.2.12|^3.3.5"
     },
