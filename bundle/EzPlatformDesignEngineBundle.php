@@ -28,7 +28,7 @@ class EzPlatformDesignEngineBundle extends Bundle
         /** @var \eZ\Bundle\EzPublishCoreBundle\DependencyInjection\EzPublishCoreExtension $eZExtension */
         $eZExtension = $container->getExtension('ezpublish');
         $eZExtension->addConfigParser(new DesignConfigParser());
-        $eZExtension->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yml']);
+        $eZExtension->addDefaultSettings(__DIR__ . '/Resources/config', ['default_settings.yaml']);
 
         $container->addCompilerPass(new TwigThemePass());
         $container->addCompilerPass(new AssetThemePass(), PassConfig::TYPE_OPTIMIZE);
