@@ -16,11 +16,11 @@ use PHPUnit\Framework\TestCase;
 class ThemeTemplateNameResolverTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|ConfigResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|ConfigResolverInterface
      */
     private $configResolver;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
