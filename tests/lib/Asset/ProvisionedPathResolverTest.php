@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 class ProvisionedPathResolverTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|AssetPathResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|AssetPathResolverInterface
      */
     private $innerResolver;
 
@@ -27,7 +27,7 @@ class ProvisionedPathResolverTest extends TestCase
      */
     private $webrootDir;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->innerResolver = $this->createMock(AssetPathResolverInterface::class);

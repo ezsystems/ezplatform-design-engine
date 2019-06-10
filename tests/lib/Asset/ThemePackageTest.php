@@ -18,21 +18,21 @@ use Symfony\Component\Asset\PackageInterface;
 class ThemePackageTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolverInterface
      */
     private $assetPathResolver;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Symfony\Component\Asset\PackageInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Symfony\Component\Asset\PackageInterface
      */
     private $innerPackage;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\eZ\Publish\Core\MVC\ConfigResolverInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject|\eZ\Publish\Core\MVC\ConfigResolverInterface
      */
     private $configResolver;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
