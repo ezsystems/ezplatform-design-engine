@@ -30,7 +30,7 @@ class TwigThemePass implements CompilerPassInterface
             return;
         }
 
-        $globalViewsDir = $container->getParameter('kernel.root_dir') . '/Resources/views';
+        $globalViewsDir = $container->getParameter('twig.default_path');
         if (!is_dir($globalViewsDir)) {
             (new Filesystem())->mkdir($globalViewsDir);
         }
@@ -54,7 +54,7 @@ class TwigThemePass implements CompilerPassInterface
         }
 
         $twigLoaderDef = $container->findDefinition('ezdesign.twig_theme_loader');
-        // Now look for themes at application level (app/Resources/views/themes)
+        // Now look for themes at application level
         $appLevelThemesDir = $globalViewsDir . '/themes';
         if (is_dir($appLevelThemesDir)) {
             foreach ((new Finder())->directories()->in($appLevelThemesDir)->depth('== 0') as $directoryInfo) {
