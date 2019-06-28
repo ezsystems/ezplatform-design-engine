@@ -1,7 +1,7 @@
 # Design usage with templates
 
 By convention, a theme directory must be located under `<bundle_directory>/Resources/views/themes/` or global
-`templates/views/themes/` directories.
+`templates/themes/` directories.
 
 Typical paths can be for example:
 - `templates/themes/foo/` => Templates will be part of the `foo` theme.
