@@ -13,7 +13,7 @@ For assets, the system uses the Symfony Asset component with asset packages.
 
 - **Theme**: Labeled collection of templates and assets.
 
-  Typically a directory containing templates. For example, templates located under `app/Resources/views/themes/my_theme`
+  Typically a directory containing templates. For example, templates located under `templates/themes/my_theme`
   or `src/AppBundle/Resources/views/themes/my_theme` are part of `my_theme` theme.
 - **Design**: Collection of themes.
 

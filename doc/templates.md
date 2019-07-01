@@ -1,11 +1,11 @@
 # Design usage with templates
 
 By convention, a theme directory must be located under `<bundle_directory>/Resources/views/themes/` or global
-`app/Resources/views/themes/` directories.
+`templates/themes/` directories.
 
 Typical paths can be for example:
-- `app/Resources/views/themes/foo/` => Templates will be part of the `foo` theme.
-- `app/Resources/views/themes/bar/` => Templates will be part of the `bar` theme.
+- `templates/themes/foo/` => Templates will be part of the `foo` theme.
+- `templates/themes/bar/` => Templates will be part of the `bar` theme.
 - `src/AppBundle/Resources/views/themes/foo/` => Templates will be part of the `foo`theme.
 - `src/Acme/TestBundle/Resources/views/themes/the_best/` => Templates will be part of `the_best` theme.
 
@@ -36,17 +36,17 @@ ezpublish:
 ## Fallback order
 
 The default fallback order is:
-- Application theme directory: `app/Resources/views/themes/<theme_name>/`
+- Application theme directory: `templates/themes/<theme_name>/`
 - Bundle theme directory: `src/<bundle_directory>/Resources/views/themes/<theme_name>/`
 
-Prior to version 2.0 of this package, `app/Resources/views` was the top-level global override directory.
+Prior to version 2.0 of this package, `templates` was the top-level global override directory.
 This behavior is not recommended as it could affect both core features and third party bundles 
 which already use `@ezdesign`. However, if still needed, it can be achieved by the following configuration:
 
 ```yaml
 ezdesign:
     templates_override_paths:
-        - '%kernel.root_dir%/app/Resources/views'
+        - '%kernel.project_dir%/templates'
 ```
 
 > Bundle fallback order is the instantiation order in `AppKernel`.
