@@ -16,7 +16,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "ezsystems/ezpublish-kernel": "^8.0@dev",
+        "ezsystems/ezpublish-kernel": "^8.0@beta",
         "twig/twig": "^2.11",
         "symfony/dependency-injection": "^4.3",
         "symfony/http-kernel": "^4.3",
