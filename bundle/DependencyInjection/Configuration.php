@@ -16,9 +16,9 @@ class Configuration extends SiteAccessConfiguration
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ezdesign');
+        $treeBuilder = new TreeBuilder('ezdesign');
 
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode
             ->children()
                 ->arrayNode('design_list')
