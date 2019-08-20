@@ -13,8 +13,6 @@
             "email": "dev-team@ez.no"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "ezsystems/ezpublish-kernel": "^8.0@dev",
         "twig/twig": "^2.11",
