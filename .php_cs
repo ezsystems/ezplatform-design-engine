@@ -18,6 +18,7 @@ return PhpCsFixer\Config::create()
         'space_after_semicolon' => false,
         'yoda_style' => false,
         'no_break_comment' => false,
+        'phpdoc_types_order' => false,
     ])
     ->setRiskyAllowed(true)
     ->setFinder(

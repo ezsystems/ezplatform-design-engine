@@ -41,7 +41,7 @@ class TwigThemePass implements CompilerPassInterface
         // Look for themes in bundles.
         foreach ($container->getParameter('kernel.bundles') as $bundleName => $bundleClass) {
             $bundleReflection = new ReflectionClass($bundleClass);
-            $bundleViewsDir = dirname($bundleReflection->getFileName()) . '/Resources/views';
+            $bundleViewsDir = \dirname($bundleReflection->getFileName()) . '/Resources/views';
             $themeDir = $bundleViewsDir . '/themes';
             if (!is_dir($themeDir)) {
                 continue;
@@ -99,7 +99,7 @@ class TwigThemePass implements CompilerPassInterface
         $twigDataCollector = $container->findDefinition('data_collector.twig');
         $twigDataCollector->setClass(TwigDataCollector::class);
 
-        if (count($twigDataCollector->getArguments()) === 1) {
+        if (\count($twigDataCollector->getArguments()) === 1) {
             // In versions of Symfony prior to 3.4, "data_collector.twig" had only one
             // argument, we're adding "twig" service to satisfy constructor overriden
             // in EzSystems\EzPlatformDesignEngineBundle\DataCollector\TwigDataCollector
