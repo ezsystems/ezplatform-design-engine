@@ -21,13 +21,11 @@ services:
     ezdesign.twig_theme_loader:
         class: EzSystems\EzPlatformDesignEngine\Templating\Twig\TwigThemeLoader
         public: false
-        decorates: twig.loader.filesystem
+        decorates: twig.loader.native_filesystem
         arguments:
             - "@ezdesign.template_name_resolver"
             - "@ezdesign.template_path_registry"
             - "@ezdesign.twig_theme_loader.inner"
-            - "@templating.locator"
-            - "@templating.name_parser"
 
     ezdesign.asset_path_resolver.runtime:
         class: EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver
