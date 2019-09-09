@@ -10,6 +10,7 @@
 namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
 
 use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver;
+use EzSystems\EzPlatformDesignEngine\Exception\InvalidDesignException;
 use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
 use Psr\Log\LoggerInterface;
@@ -29,12 +30,13 @@ class AssetPathResolverTest extends TestCase
     }
 
     /**
-     * @expectedException \EzSystems\EzPlatformDesignEngine\Exception\InvalidDesignException
+     * @covers \EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver::resolveAssetPath
      */
     public function testResolveInvalidDesign()
     {
         $resolver = new AssetPathResolver([], __DIR__);
         $assetPath = 'images/foo.png';
+        $this->expectException(InvalidDesignException::class);
         self::assertSame($assetPath, $resolver->resolveAssetPath($assetPath, 'foo'));
     }
 
