@@ -11,7 +11,6 @@ namespace EzSystems\EzPlatformDesignEngine\Templating\Twig;
 
 use EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface;
 use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface;
-use Twig\Loader\ExistsLoaderInterface;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 use Twig\Loader\SourceContextLoaderInterface;
@@ -20,7 +19,7 @@ use Twig\Loader\SourceContextLoaderInterface;
  * Decorates regular Twig FilesystemLoader.
  * It resolves generic @ezdesign namespace to the actual current namespace.
  */
-class TwigThemeLoader implements LoaderInterface, ExistsLoaderInterface, SourceContextLoaderInterface
+class TwigThemeLoader implements LoaderInterface, SourceContextLoaderInterface
 {
     /**
      * @var TemplateNameResolverInterface
