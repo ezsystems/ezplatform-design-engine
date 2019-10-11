@@ -14,6 +14,8 @@ use Symfony\Bridge\Twig\DataCollector\TwigDataCollector as BaseCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
+use Twig\Environment;
+use Twig\Profiler\Profile;
 
 class TwigDataCollector extends BaseCollector implements LateDataCollectorInterface
 {
@@ -22,7 +24,7 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
      */
     private $templatePathRegistry;
 
-    public function __construct(\Twig_Profiler_Profile $profile, \Twig_Environment $environment, TemplatePathRegistryInterface $templatePathRegistry)
+    public function __construct(Profile $profile, Environment $environment, TemplatePathRegistryInterface $templatePathRegistry)
     {
         parent::__construct($profile, $environment);
         $this->templatePathRegistry = $templatePathRegistry;
