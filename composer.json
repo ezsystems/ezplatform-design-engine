@@ -14,8 +14,8 @@
         }
     ],
     "require": {
-        "ezsystems/doctrine-dbal-schema": "^1.0@dev",
-        "ezsystems/ezpublish-kernel": "^8.0@dev",
+        "ezsystems/doctrine-dbal-schema": "^1.0",
+        "ezsystems/ezpublish-kernel": "^8.0",
         "twig/twig": "^2.11",
         "symfony/dependency-injection": "^4.3",
         "symfony/http-kernel": "^4.3",
