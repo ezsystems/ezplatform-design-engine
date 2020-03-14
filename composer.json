@@ -16,8 +16,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
-        {"type": "vcs", "url": "https://github.com/ezsystems/doctrine-dbal-schema.git"},
-        {"type": "vcs", "url": "https://github.com/webhdx/ezpublish-kernel.git"},
         {"type": "vcs", "url": "https://github.com/webhdx/JMSTranslationBundle.git"},
         {"type": "vcs", "url": "https://github.com/webhdx/Routing.git"}
     ],
