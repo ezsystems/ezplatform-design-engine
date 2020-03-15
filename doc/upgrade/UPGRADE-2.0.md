@@ -13,5 +13,5 @@ However, if still needed, it can be achieved by the following configuration:
 ```yaml
 ezdesign:
     templates_override_paths:
-        - '%kernel.root_dir%/app/Resources/views'
+        - '%kernel.project_dir%%/templates'
 ```

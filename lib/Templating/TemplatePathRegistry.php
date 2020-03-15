@@ -27,7 +27,7 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
 
     public function mapTemplatePath($templateName, $path)
     {
-        $this->pathMap[$templateName] = str_replace(\dirname($this->kernelRootDir) . '/', '', $path);
+        $this->pathMap[$templateName] = str_replace($this->kernelRootDir . '/', '', $path);
     }
 
     public function getTemplatePath($templateName)
