@@ -39,7 +39,7 @@ class TwigDataCollector extends BaseCollector implements LateDataCollectorInterf
         return $this->templatePathRegistry;
     }
 
-    public function collect(Request $request, Response $response, \Exception $exception = null)
+    public function collect(Request $request, Response $response, \Throwable $exception = null)
     {
         parent::collect($request, $response, $exception);
     }
