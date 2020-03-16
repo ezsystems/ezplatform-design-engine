@@ -13,13 +13,13 @@ use EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface;
 use EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
-use Twig\Loader\SourceContextLoaderInterface;
+use Twig\Source;
 
 /**
  * Decorates regular Twig FilesystemLoader.
  * It resolves generic @ezdesign namespace to the actual current namespace.
  */
-class TwigThemeLoader implements LoaderInterface, SourceContextLoaderInterface
+class TwigThemeLoader implements LoaderInterface
 {
     /**
      * @var TemplateNameResolverInterface
@@ -56,7 +56,7 @@ class TwigThemeLoader implements LoaderInterface, SourceContextLoaderInterface
         return $this->innerFilesystemLoader->getSource($this->nameResolver->resolveTemplateName($name));
     }
 
-    public function getSourceContext($name)
+    public function getSourceContext(string $name): Source
     {
         $source = $this->innerFilesystemLoader->getSourceContext($this->nameResolver->resolveTemplateName((string)$name));
         $this->pathRegistry->mapTemplatePath($source->getName(), $source->getPath());
@@ -64,12 +64,12 @@ class TwigThemeLoader implements LoaderInterface, SourceContextLoaderInterface
         return $source;
     }
 
-    public function getCacheKey($name)
+    public function getCacheKey(string $name): string
     {
         return $this->innerFilesystemLoader->getCacheKey($this->nameResolver->resolveTemplateName($name));
     }
 
-    public function isFresh($name, $time)
+    public function isFresh(string $name, int $time): bool
     {
         return $this->innerFilesystemLoader->isFresh($this->nameResolver->resolveTemplateName($name), $time);
     }
