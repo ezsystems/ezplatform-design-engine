@@ -16,7 +16,7 @@ class TemplatePathRegistryTest extends TestCase
 {
     private function getExpectedRelativePath($templateFullPath, $kernelRootDir)
     {
-        return str_replace(\dirname($kernelRootDir) . '/', '', $templateFullPath);
+        return str_replace($kernelRootDir . '/', '', $templateFullPath);
     }
 
     public function testMapTemplatePath()
