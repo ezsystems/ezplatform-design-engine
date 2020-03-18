@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "ezsystems/ezpublish-kernel": "^8.0@dev",
+        "ezsystems/ezpublish-kernel": "^8.0",
         "twig/twig": "^3.0",
         "symfony/dependency-injection": "^5.0",
         "symfony/http-kernel": "^5.0",
