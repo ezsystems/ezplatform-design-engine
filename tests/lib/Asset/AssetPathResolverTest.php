@@ -11,8 +11,8 @@ namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
 
 use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver;
 use EzSystems\EzPlatformDesignEngine\Exception\InvalidDesignException;
-use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class AssetPathResolverTest extends TestCase
