@@ -52,7 +52,7 @@ class Configuration extends SiteAccessConfiguration
                         ->booleanNode('enabled')->defaultValue('%kernel.debug%')->info('Activates PHPStorm support')->end()
                         ->scalarNode('twig_config_path')
                             ->info('Path where to store PHPStorm configuration file for additional Twig namespaces (ide-twig.json).')
-                            ->defaultValue('%kernel.root_dir%/..')
+                            ->defaultValue('%kernel.project_dir%')
                         ->end()
                     ->end()
                 ->end()
