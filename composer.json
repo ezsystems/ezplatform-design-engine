@@ -13,10 +13,8 @@
             "email": "dev-team@ez.no"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
-        "ezsystems/ezpublish-kernel": "dev-symfony5 as 8.0.x-dev",
+        "ezsystems/ezpublish-kernel": "^8.0@dev",
         "twig/twig": "^3.0",
         "symfony/dependency-injection": "^5.0",
         "symfony/http-kernel": "^5.0",
