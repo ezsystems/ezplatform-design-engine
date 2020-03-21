@@ -26,6 +26,7 @@
         "symfony/templating": "^5.0"
     },
     "require-dev": {
+        "ezsystems/doctrine-dbal-schema": "^1.0@dev",
         "phpunit/phpunit": "^8.1",
         "friendsofphp/php-cs-fixer": "~2.15.3",
         "mikey179/vfsstream": "^1.6"
