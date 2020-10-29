@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "ezsystems/ezplatform-kernel": "~1.0.0@dev || ~1.1.0@dev",
+        "ezsystems/ezplatform-kernel": "~1.0.0@dev || ~1.1.0@dev || ~1.2.0@dev",
         "twig/twig": "^3.0",
         "symfony/dependency-injection": "^5.0",
         "symfony/http-kernel": "^5.0",
