@@ -1,7 +1,7 @@
 {
     "name": "ezsystems/ezplatform-design-engine",
     "description": "Design fallback mechanism for eZ Platform",
-    "license": "MIT",
+    "license": "GPL-2.0-only",
     "type": "ezplatform-bundle",
     "authors": [
         {
