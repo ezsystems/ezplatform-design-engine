@@ -10,8 +10,8 @@
 namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
 
 use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver;
-use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class AssetPathResolverTest extends TestCase
@@ -111,7 +111,7 @@ class AssetPathResolverTest extends TestCase
     {
         $webrootDir = vfsStream::setup('web');
         foreach ($designPaths['foo'] as $designPath) {
-            if (in_array($designPath, $existingPaths)) {
+            if (\in_array($designPath, $existingPaths)) {
                 $fileInfo = new \SplFileInfo($designPath . '/' . $path);
                 $parent = $webrootDir;
                 foreach (explode('/', $fileInfo->getPath()) as $dir) {

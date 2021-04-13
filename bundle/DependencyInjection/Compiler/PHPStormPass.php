@@ -45,7 +45,7 @@ class PHPStormPass implements CompilerPassInterface
 
         (new Filesystem())->dumpFile(
             $twigConfigPath . '/ide-twig.json',
-            json_encode(['namespaces' => $pathConfig], JSON_UNESCAPED_SLASHES)
+            json_encode(['namespaces' => $pathConfig], \JSON_UNESCAPED_SLASHES)
         );
     }
 
