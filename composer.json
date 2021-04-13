@@ -9,14 +9,15 @@
             "email": "jerome@vieilledent.fr"
         },
         {
-            "name": "eZ Systems dev team",
-            "email": "dev-team@ez.no"
+            "name": "Ibexa AS dev team",
+            "homepage": "https://ibexa.co"
         }
     ],
     "require": {
-        "ezsystems/ezpublish-kernel": "^6.0.0|^7.0",
-        "twig/twig": "^1.27|^2.0",
-        "symfony/symfony": "^2.8.25|^3.1.6|^3.2.12|^3.3.5"
+        "php": "^7.1",
+        "ezsystems/ezpublish-kernel": "^7.5@dev",
+        "twig/twig": "^2.13.1",
+        "symfony/symfony": "^3.4.47"
     },
     "require-dev": {
         "ezsystems/ezplatform-code-style": "^0.4.0",
