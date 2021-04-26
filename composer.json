@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "ezsystems/ezplatform-kernel": "^1.0@dev",
+        "ezsystems/ezplatform-kernel": "^2.0@dev",
         "twig/twig": "^3.0",
         "symfony/dependency-injection": "^5.0",
         "symfony/http-kernel": "^5.0",
@@ -26,7 +26,7 @@
         "symfony/templating": "^5.0"
     },
     "require-dev": {
-        "ezsystems/doctrine-dbal-schema": "^1.0@dev",
+        "ezsystems/doctrine-dbal-schema": "^2.0@dev",
         "phpunit/phpunit": "^8.1",
         "friendsofphp/php-cs-fixer": "~2.15.3",
         "mikey179/vfsstream": "^1.6"
@@ -48,7 +48,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.1.x-dev"
+            "dev-master": "4.0.x-dev"
         }
     },
     "conflict": {
