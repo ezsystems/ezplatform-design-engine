@@ -31,7 +31,7 @@ class AssetThemePass implements CompilerPassInterface
         // Look for assets themes in bundles.
         foreach ($container->getParameter('kernel.bundles') as $bundleName => $bundleClass) {
             $bundleReflection = new \ReflectionClass($bundleClass);
-            $bundleViewsDir = dirname($bundleReflection->getFileName()) . '/Resources/public';
+            $bundleViewsDir = \dirname($bundleReflection->getFileName()) . '/Resources/public';
             $themeDir = $bundleViewsDir . '/themes';
             if (!is_dir($themeDir)) {
                 continue;

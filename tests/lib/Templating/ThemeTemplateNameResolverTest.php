@@ -20,7 +20,7 @@ class ThemeTemplateNameResolverTest extends TestCase
      */
     private $configResolver;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 

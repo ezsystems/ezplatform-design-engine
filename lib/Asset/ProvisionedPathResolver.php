@@ -87,7 +87,7 @@ class ProvisionedPathResolver implements AssetPathResolverInterface, AssetPathPr
         $logicalPaths = [];
         /** @var \SplFileInfo $fileInfo */
         foreach ((new Finder())->files()->in($themePath)->exclude('themes')->followLinks()->ignoreUnreadableDirs() as $fileInfo) {
-            $logicalPaths[] = trim(substr($fileInfo->getPathname(), strlen($themePath)), '/');
+            $logicalPaths[] = trim(substr($fileInfo->getPathname(), \strlen($themePath)), '/');
         }
 
         return $logicalPaths;
