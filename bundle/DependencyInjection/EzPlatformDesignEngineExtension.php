@@ -49,8 +49,9 @@ class EzPlatformDesignEngineExtension extends Extension
         $container->setParameter('ezdesign.templates_path_map', $config['templates_theme_paths']);
         $container->setParameter('ezdesign.asset_resolution.disabled', $config['disable_assets_pre_resolution']);
 
-        // PHPStorm settings
-        $container->setParameter('ezdesign.phpstorm.enabled', $config['phpstorm']['enabled']);
+        // PHPStorm settings, it should be disabled on Platform.sh
+        $isPhpStormEnable = isset($_SERVER['PLATFORM_PROJECT_ENTROPY']) ? false : $config['phpstorm']['enabled'];
+        $container->setParameter('ezdesign.phpstorm.enabled', $isPhpStormEnable);
         $container->setParameter('ezdesign.phpstorm.twig_config_path', $config['phpstorm']['twig_config_path']);
     }
 }
