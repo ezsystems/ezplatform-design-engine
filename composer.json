@@ -23,7 +23,8 @@
         "symfony/finder": "^5.0",
         "symfony/filesystem": "^5.0",
         "symfony/asset": "^5.0",
-        "symfony/templating": "^5.0"
+        "symfony/templating": "^5.0",
+        "php": "^7.3 || ^8.0"
     },
     "require-dev": {
         "ezsystems/doctrine-dbal-schema": "^1.0@dev",
