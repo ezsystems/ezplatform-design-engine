@@ -8,7 +8,6 @@ namespace EzSystems\EzPlatformDesignEngineBundle;
 
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetPathResolutionPass;
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\AssetThemePass;
-use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\PHPStormPass;
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\Compiler\TwigThemePass;
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\DesignConfigParser;
 use EzSystems\EzPlatformDesignEngineBundle\DependencyInjection\EzPlatformDesignEngineExtension;
@@ -30,7 +29,6 @@ class EzPlatformDesignEngineBundle extends Bundle
         $container->addCompilerPass(new TwigThemePass());
         $container->addCompilerPass(new AssetThemePass(), PassConfig::TYPE_OPTIMIZE);
         $container->addCompilerPass(new AssetPathResolutionPass(), PassConfig::TYPE_OPTIMIZE);
-        $container->addCompilerPass(new PHPStormPass(), PassConfig::TYPE_OPTIMIZE);
     }
 
     public function getContainerExtension()
