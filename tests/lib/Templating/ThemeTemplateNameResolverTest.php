@@ -1,12 +1,9 @@
 <?php
 
-/*
- * This file is part of the EzPlatformDesignEngine package.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace EzSystems\EzPlatformDesignEngine\Tests\Templating;
 
 use eZ\Publish\Core\MVC\ConfigResolverInterface;
@@ -16,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class ThemeTemplateNameResolverTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|ConfigResolverInterface
+     * @var \PHPUnit_Framework_MockObject_MockObject|\eZ\Publish\Core\MVC\ConfigResolverInterface
      */
     private $configResolver;
 
