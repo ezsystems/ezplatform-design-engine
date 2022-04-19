@@ -1,6 +1,12 @@
 <?php
+use EzSystems\EzPlatformCodeStyle\PhpCsFixer\EzPlatformInternalConfigFactory;
 
-return EzSystems\EzPlatformCodeStyle\PhpCsFixer\EzPlatformInternalConfigFactory::build()
+$configFactory = new EzPlatformInternalConfigFactory();
+$configFactory->withRules([
+    'declare_strict_types' => false,
+]);
+
+return $configFactory->buildConfig()
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->in([
