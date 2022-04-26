@@ -1,17 +1,14 @@
 <?php
 
-/*
- * This file is part of the EzPlatformDesignEngine package.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace EzSystems\EzPlatformDesignEngine\Tests\Asset;
 
 use EzSystems\EzPlatformDesignEngine\Asset\AssetPathResolver;
-use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class AssetPathResolverTest extends TestCase

@@ -1,12 +1,9 @@
 <?php
 
-/*
- * This file is part of the EzPlatformDesignEngine package.
- *
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-
 namespace EzSystems\EzPlatformDesignEngine\Templating\Twig;
 
 use EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface;
@@ -28,17 +25,17 @@ use Twig_LoaderInterface;
 class TwigThemeLoader extends FilesystemLoader implements Twig_LoaderInterface, Twig_ExistsLoaderInterface
 {
     /**
-     * @var TemplateNameResolverInterface
+     * @var \EzSystems\EzPlatformDesignEngine\Templating\TemplateNameResolverInterface
      */
     private $nameResolver;
 
     /**
-     * @var TemplatePathRegistryInterface
+     * @var \EzSystems\EzPlatformDesignEngine\Templating\TemplatePathRegistryInterface
      */
     private $pathRegistry;
 
     /**
-     * @var Twig_LoaderInterface|Twig_ExistsLoaderInterface|\Twig_Loader_Filesystem
+     * @var \Twig_LoaderInterface|\Twig_ExistsLoaderInterface|\Twig_Loader_Filesystem
      */
     private $innerFilesystemLoader;
 
