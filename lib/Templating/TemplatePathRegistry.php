@@ -46,4 +46,14 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
     {
         list($this->pathMap, $this->kernelRootDir) = unserialize($serialized);
     }
+
+    public function __serialize(): array
+    {
+        return [$this->pathMap, $this->kernelRootDir];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        list($this->pathMap, $this->kernelRootDir) = $data;
+    }
 }
