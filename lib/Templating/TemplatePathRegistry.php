@@ -10,11 +10,10 @@ use Serializable;
 
 class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializable
 {
+    /** @var array<string, string> */
     private $pathMap = [];
 
-    /**
-     * @var
-     */
+    /** @var string */
     private $kernelRootDir;
 
     public function __construct($kernelRootDir)
@@ -44,6 +43,16 @@ class TemplatePathRegistry implements TemplatePathRegistryInterface, Serializabl
 
     public function unserialize($serialized)
     {
-        list($this->pathMap, $this->kernelRootDir) = unserialize($serialized);
+        [$this->pathMap, $this->kernelRootDir] = unserialize($serialized);
+    }
+
+    public function __serialize(): array
+    {
+        return [$this->pathMap, $this->kernelRootDir];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        [$this->pathMap, $this->kernelRootDir] = $data;
     }
 }
