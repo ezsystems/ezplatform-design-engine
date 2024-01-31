@@ -12,7 +12,7 @@ namespace EzSystems\EzPlatformDesignEngine\Templating;
  */
 interface TemplateNameResolverInterface
 {
-    const EZ_DESIGN_NAMESPACE = 'ezdesign';
+    public const EZ_DESIGN_NAMESPACE = 'ezdesign';
 
     /**
      * Resolves provided template name within current design and returns properly namespaced template name.

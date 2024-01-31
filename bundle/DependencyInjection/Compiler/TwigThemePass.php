@@ -88,8 +88,11 @@ class TwigThemePass implements CompilerPassInterface
         }
 
         $themesList = $container->getParameter('ezdesign.themes_list');
-        $container->setParameter('ezdesign.themes_list', array_unique(
-            array_merge($themesList, array_keys($themesPathMap)))
+        $container->setParameter(
+            'ezdesign.themes_list',
+            array_unique(
+            array_merge($themesList, array_keys($themesPathMap))
+        )
         );
         $container->setParameter('ezdesign.templates_path_map', $themesPathMap);
 
