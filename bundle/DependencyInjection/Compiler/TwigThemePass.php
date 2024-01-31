@@ -11,7 +11,6 @@ use ReflectionClass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -27,10 +26,6 @@ class TwigThemePass implements CompilerPassInterface
             return;
         }
 
-        $globalViewsDir = $container->getParameter('twig.default_path');
-        if (!is_dir($globalViewsDir)) {
-            (new Filesystem())->mkdir($globalViewsDir);
-        }
         $themesPathMap = [
             '_override' => $container->getParameter('ezdesign.templates_override_paths'),
         ];
@@ -52,11 +47,11 @@ class TwigThemePass implements CompilerPassInterface
 
         $twigLoaderDef = $container->findDefinition('ezdesign.twig_theme_loader');
         // Now look for themes at application level
-        $appLevelThemesDir = $globalViewsDir . '/themes';
+        $appLevelThemesDir = $container->getParameter('twig.default_path') . '/themes';
         if (is_dir($appLevelThemesDir)) {
             foreach ((new Finder())->directories()->in($appLevelThemesDir)->depth('== 0') as $directoryInfo) {
                 $theme = $directoryInfo->getBasename();
-                $themePaths = isset($themesPathMap[$theme]) ? $themesPathMap[$theme] : [];
+                $themePaths = $themesPathMap[$theme] ?? [];
                 // Application level paths are always top priority.
                 array_unshift($themePaths, $directoryInfo->getRealPath());
                 $themesPathMap[$theme] = $themePaths;
@@ -91,8 +86,8 @@ class TwigThemePass implements CompilerPassInterface
         $container->setParameter(
             'ezdesign.themes_list',
             array_unique(
-            array_merge($themesList, array_keys($themesPathMap))
-        )
+                array_merge($themesList, array_keys($themesPathMap))
+            )
         );
         $container->setParameter('ezdesign.templates_path_map', $themesPathMap);
 
