@@ -58,8 +58,6 @@
         "lolautruche/ez-core-extra-bundle": "<2.0"
     },
     "config": {
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true
-        }
+        "allow-plugins": false
     }
 }
