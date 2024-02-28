@@ -75,8 +75,11 @@ class AssetThemePass implements CompilerPassInterface
         }
 
         $themesList = $container->getParameter('ezdesign.themes_list');
-        $container->setParameter('ezdesign.themes_list', array_unique(
-            array_merge($themesList, array_keys($themesPathMap)))
+        $container->setParameter(
+            'ezdesign.themes_list',
+            array_unique(
+                array_merge($themesList, array_keys($themesPathMap))
+            )
         );
         $container->setParameter('ezdesign.assets_path_map', $pathsByDesign);
         $container->findDefinition('ezdesign.asset_path_resolver')
